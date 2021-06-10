@@ -5,13 +5,12 @@ language: java
 script:
   - mvn package -Dmaven.test.skip=true
 before_deploy:
-  - echo "$ID_RSA_PASSWORD"
   - echo "$ID_RSA_PASSWORD" > /tmp/id_rsa_password
   - openssl enc -d -aes-128-cbc -in ./id_rsa.enc -out ~/.ssh/id_rsa -pass file:/tmp/id_rsa_password
   - chmod 600 ~/.ssh/id_rsa
-  - cat ~/.ssh/id_rsa
   - rm /tmp/id_rsa_password
 deploy:
+  skip_cleanup: true
   provider: script
   script: ./scripts/deploy.sh
 
