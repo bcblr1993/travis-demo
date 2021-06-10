@@ -5,6 +5,7 @@ language: java
 script:
   - mvn package -Dmaven.test.skip=true
 before_deploy:
+  - echo "$id_rsa"
   - echo "$id_rsa" > ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa
   - cat ~/.ssh/id_rsa
