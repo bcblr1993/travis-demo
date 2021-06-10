@@ -1,10 +1,15 @@
 language: java
 
+
 #install:
 script:
   - mvn package -Dmaven.test.skip=true
+before_deploy:
+  - echo "$id_rsa" > ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
 deploy:
   provider: script
-  script:
-    - echo 'hello travis'
-    - echo 'love travis'
+  script: ./scripts/deploy.sh
+
+addons:
+  ssh_known_hosts: 8.140.185.101
