@@ -12,7 +12,7 @@ before_deploy:
 deploy:
   skip_cleanup: true
   provider: script
-  script: ./scripts/deploy.sh
+  script: bash scripts/deploy.sh
 
 addons:
   ssh_known_hosts: 8.140.185.101
