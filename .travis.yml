@@ -1,0 +1,10 @@
+language: java
+
+#install:
+script:
+  - ./mvn package -Dmaven.test.skip=true
+deploy:
+  provider: script
+  script:
+    - echo 'hello travis'
+    - echo 'love travis'
